@@ -24,7 +24,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -97,7 +97,7 @@ public class UserService {
 
             LoginHistory loginHistory = LoginHistory.builder()
                     .email(email)
-                    .loginDate(new Date(System.currentTimeMillis()))
+                    .loginDate(LocalDateTime.now())
                     .build();
 
             loginHistoryRepository.save(loginHistory);

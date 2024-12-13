@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -20,5 +20,5 @@ public class LoginHistory {
     private Long id;
 
     private String email;
-    private Date loginDate;
+    private LocalDateTime loginDate;
 }
