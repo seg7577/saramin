@@ -9,7 +9,7 @@ spring:
     password: root1234!!
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create-drop #제출전 수정
     show-sql: true
 jwt:
   secret: EE31F6B4308522E4F01BF583E6DFDC1CA1A3DDF953837C913B15E1CE98A170F7
@@ -17,4 +17,8 @@ jwt:
 
 logging:
   level:
+    root: INFO
+    com.example.saramin: INFO
     org.springframework.security: DEBUG
+    org.springframework: INFO
+    org.springframework.web: DEBUG

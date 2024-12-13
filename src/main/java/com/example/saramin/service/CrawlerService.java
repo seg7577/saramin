@@ -26,9 +26,8 @@ import java.util.concurrent.ThreadLocalRandom;
 @RequiredArgsConstructor
 public class CrawlerService {
     private static final String BASE_URL = "https://www.saramin.co.kr/zf_user/jobs/list/job-category?cat_kewd=%d&panel_type=&search_optional_item=n&search_done=y&panel_count=y&preview=y";
-    private static final int MAX_JOBS_PER_KEY = 5;
-    private static final int TOTAL_MAX_JOBS = 5;
-
+    private static final int MAX_JOBS_PER_KEY = 5;  //
+    private static final int TOTAL_MAX_JOBS = 5;    //제출 전 수정 100개 이상
     private final CompanyRepository companyRepository;
     private final JobPostRepository jobPostRepository;
     private final CrawlerValidator crawlerValidator;
