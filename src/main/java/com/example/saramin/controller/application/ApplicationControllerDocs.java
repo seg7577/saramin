@@ -1,6 +1,6 @@
 package com.example.saramin.controller.application;
 
-import com.example.saramin.entity.dto.Application.ApplicationRequest;
+import com.example.saramin.entity.dto.Application.ApplicationForm;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -24,7 +24,7 @@ public interface ApplicationControllerDocs {
                     content = @Content(mediaType = "application/json",
                             examples = @ExampleObject(value = "{\"status\": \"400\", \"message\": \"이미 지원한 공고입니다.\"}")))
     })
-    ResponseEntity<Map<String, Object>> application(@RequestBody ApplicationRequest applicationRequest, Authentication authentication);
+    ResponseEntity<Map<String, Object>> application(@RequestBody ApplicationForm applicationRequest, Authentication authentication);
 
     @Operation(summary = "지원 내역 조회", description = "사용자의 지원 내역을 최신순으로 조회합니다.")
     @ApiResponses({

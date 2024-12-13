@@ -1,6 +1,6 @@
 package com.example.saramin.controller.application;
 
-import com.example.saramin.entity.dto.Application.ApplicationRequest;
+import com.example.saramin.entity.dto.Application.ApplicationForm;
 import com.example.saramin.service.ApplicationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +16,8 @@ public class ApplicationController implements ApplicationControllerDocs {
     private final ApplicationService applicationService;
 
     @PostMapping
-    public ResponseEntity<Map<String, Object>> application(@RequestBody ApplicationRequest applicationRequest, Authentication authentication) {
-        Map<String, Object> response = applicationService.application(applicationRequest, authentication);
+    public ResponseEntity<Map<String, Object>> application(@RequestBody ApplicationForm applicationForm, Authentication authentication) {
+        Map<String, Object> response = applicationService.application(applicationForm, authentication);
         return ResponseEntity.ok(response);
     }
 

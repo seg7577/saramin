@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ApplicationRequest {
+public class ApplicationForm {
 
     @Schema(description = "지원할 채용 공고의 ID", example = "1")
     private Long jobPostId;
