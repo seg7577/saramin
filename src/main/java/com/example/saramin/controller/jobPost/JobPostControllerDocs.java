@@ -37,13 +37,20 @@ public interface JobPostControllerDocs {
                             examples = @ExampleObject(value = "{\"status\": \"400\", \"message\": \"페이지 번호가 잘못되었습니다\"}")))
     })
     ResponseEntity<Map<String, Object>> getJobPosts(
-            @Parameter(description = "현재 페이지 번호", example = "1") Integer currentPage,
-            @Parameter(description = "정렬 기준: newest(최신순) 혹은 alphabetical(가나다순)", example = "newest") String sortBy,
-            @Parameter(description = "지역 필터(null일 경우 필터링하지 않음)", example = "서울전체") String workplace,
-            @Parameter(description = "경력 필터(null일 경우 필터링하지 않음) 예시의 경우 경력 5년 이하를 의미", example = "5") Integer career,
-            @Parameter(description = "기술 스택 필터(null일 경우 필터링하지 않음) 그누보드, 라즈베리파이 등", example = "라즈베리파이") String skillStack,
-            @Parameter(description = "검색 방식(null일 경우 검색하지 않음) title(제목) 혹은 companyName(회사명)", example = "title") String searchBy,
-            @Parameter(description = "검색에 사용할 키워드", example = "개발") String keyword);
+            @Parameter(description = "현재 페이지 번호", example = "1", required = false)
+            Integer currentPage,
+            @Parameter(description = "정렬 기준: newest(최신순) 혹은 alphabetical(가나다순)", example = "newest", required = false)
+            String sortBy,
+            @Parameter(description = "지역 필터(null일 경우 필터링하지 않음)", example = "서울전체", required = false)
+            String workplace,
+            @Parameter(description = "경력 필터(null일 경우 필터링하지 않음) 예시의 경우 경력 5년 이하를 의미", example = "5", required = false)
+            Integer career,
+            @Parameter(description = "기술 스택 필터(null일 경우 필터링하지 않음) 그누보드, 라즈베리파이 등", example = "라즈베리파이", required = false)
+            String skillStack,
+            @Parameter(description = "검색 방식(null일 경우 검색하지 않음) title(제목) 혹은 companyName(회사명)", example = "title", required = false)
+            String searchBy,
+            @Parameter(description = "검색에 사용할 키워드", example = "개발", required = false)
+            String keyword);
 
     @Operation(summary = "채용 공고 상세 조회", description = "특정 ID의 채용 공고를 조회합니다.")
     @ApiResponses({
