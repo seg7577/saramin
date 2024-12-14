@@ -33,7 +33,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class CrawlerService {
     private static final String BASE_URL = "https://www.saramin.co.kr/zf_user/jobs/list/job-category?cat_kewd=%d&panel_type=&search_optional_item=n&search_done=y&panel_count=y&preview=y";
     private static final int MAX_JOBS_PER_KEY = 5;  //
-    private static final int TOTAL_MAX_JOBS = 5;    //제출 전 수정 100개 이상
+    private static final int TOTAL_MAX_JOBS = 500;    //제출 전 수정 100개 이상
     private final CompanyRepository companyRepository;
     private final JobPostRepository jobPostRepository;
     private final CrawlerValidator crawlerValidator;
@@ -42,7 +42,12 @@ public class CrawlerService {
     public void init() {
         log.info("크롤링 시작");
         try {
-            crawlJobPosts();
+            // job_post 테이블이 비어 있는지 확인
+            if (jobPostRepository.count() == 0) {
+                crawlJobPosts();
+            } else {
+                log.info("job_post 테이블이 비어있지 않아 크롤링을 건너뜁니다.");
+            }
         } catch (Exception e) {
             log.error("크롤링 중 오류 발생: {}", e.getMessage(), e);
         }

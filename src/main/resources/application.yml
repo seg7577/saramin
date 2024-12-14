@@ -4,12 +4,12 @@ spring:
       matching-strategy: ant-path-matcher
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/saramin
+    url: jdbc:mysql://localhost:8088/saramin
     username: root
-    password: 1234
+    password: root1234!!
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: validate
     show-sql: true
 jwt:
   secret: EE31F6B4308522E4F01BF583E6DFDC1CA1A3DDF953837C913B15E1CE98A170F7
