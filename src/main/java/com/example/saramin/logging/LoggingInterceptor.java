@@ -13,9 +13,9 @@ public class LoggingInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        logger.info("Request: {}", request.getRequestURL());
-        return true;
-    }
+    logger.info("Request: {}", request.getRequestURL());
+    return true;
+}
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception e) {

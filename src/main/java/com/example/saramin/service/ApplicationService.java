@@ -1,7 +1,7 @@
 package com.example.saramin.service;
 
 import com.example.saramin.customException.CustomExceptions;
-import com.example.saramin.entity.dto.Application.ApplicationRequest;
+import com.example.saramin.entity.dto.Application.ApplicationForm;
 import com.example.saramin.entity.dto.Application.ApplicationResponse;
 import com.example.saramin.entity.model.Application;
 import com.example.saramin.entity.model.JobPost;
@@ -25,7 +25,7 @@ public class ApplicationService {
     private final JobPostRepository jobPostRepository;
     private final UserRepository userRepository;
 
-    public Map<String, Object> application(ApplicationRequest applicationRequest, Authentication authentication) {
+    public Map<String, Object> application(ApplicationForm applicationRequest, Authentication authentication) {
         User user = userRepository.findByEmail(authentication.getName())
                 .orElseThrow(() -> new CustomExceptions.BadRequestException("사용자를 찾을 수 없습니다."));
 
