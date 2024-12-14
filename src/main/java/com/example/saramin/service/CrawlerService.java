@@ -16,7 +16,13 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
+import javax.net.ssl.*;
 import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.util.Date;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
@@ -54,6 +60,7 @@ public class CrawlerService {
             addRandomDelay();
 
             try {
+                setSSL();
                 Document doc = Jsoup.connect(url).get();
 
                 String skillStack = doc.select(".wrap_title_recruit .value").text();
@@ -134,6 +141,10 @@ public class CrawlerService {
                 }
             } catch (IOException e) {
                 log.error("키 {}에 대한 크롤링 중 오류 발생: {}", key, e.getMessage());
+            } catch (NoSuchAlgorithmException e) {
+                throw new RuntimeException(e);
+            } catch (KeyManagementException e) {
+                throw new RuntimeException(e);
             }
         }
     }
@@ -146,5 +157,37 @@ public class CrawlerService {
             Thread.currentThread().interrupt();
             log.error("지연 중 오류 발생", e);
         }
+    }
+    public static void setSSL() throws NoSuchAlgorithmException, KeyManagementException {
+        TrustManager[] trustAllCerts = new TrustManager[] {
+                new X509TrustManager() {
+
+                    @Override
+                    public X509Certificate[] getAcceptedIssuers() {
+                        // TODO Auto-generated method stub
+                        return null;
+                    }
+                    @Override
+                    public void checkClientTrusted(X509Certificate[] chain, String authType)
+                            throws CertificateException {
+                        // TODO Auto-generated method stub
+
+                    }
+                    @Override
+                    public void checkServerTrusted(X509Certificate[] chain, String authType)
+                            throws CertificateException {
+                        // TODO Auto-generated method stub
+                    }
+                }
+        };
+        SSLContext sc = SSLContext.getInstance("SSL");
+        sc.init(null, trustAllCerts, new SecureRandom());
+        HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier() {
+            @Override
+            public boolean verify(String hostname, SSLSession session) {
+                return true;
+            }
+        });
+        HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
     }
 }
