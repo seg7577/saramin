@@ -9,7 +9,7 @@ spring:
     password: 1234
   jpa:
     hibernate:
-      ddl-auto: create-drop #제출전 수정
+      ddl-auto: create
     show-sql: true
 jwt:
   secret: EE31F6B4308522E4F01BF583E6DFDC1CA1A3DDF953837C913B15E1CE98A170F7
