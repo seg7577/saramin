@@ -190,7 +190,7 @@ saramin/          # 프로젝트 루트 디렉토리
 ---
 
 ## 📖DataBase
-![image10](img/mysql_database.jpeg)
+![image10](img/mysql_database.png)
 
 ---
 
