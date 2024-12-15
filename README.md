@@ -2,6 +2,12 @@
 
 ## 🔨Spring Boot Project
 
+### ✅Version
+
+- Spring Boot version : '3.4.0'
+- MySQL version : '8.0.0'
+- java version : '17'
+
 ---
 
 - 웹 크롤링 이해 및 적용 : 사람인에서 채용 공고 데이터를 크롤링하여 수집.
@@ -12,7 +18,32 @@
 
 ---
 
-## build 명령어
+## ✅ubuntu ssh 접속
+```cpp
+ssh -i ~/.ssh/MSEOK-saramin.pem ubuntu@113.198.66.75 -p 19161
+```
+
+---
+
+## ✅docker && MySQL 
+
+### docker 컨테이너 생성
+
+- 컨테이너 생성 및 실행
+
+```cpp
+sudo docker run -d —name saramin -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=saramin -p 3306:3306 -d [이미지 이름 : 228d71078f8c] or [컨테이너 이름 : saramin] --skip-ssl
+```
+
+- 생성되어있다면? 기존의 컨테이너 실행
+
+```cpp
+sudo docker start [이미지 이름 : 228d71078f8c] or [컨테이너 이름 saramin]
+[비밀번호 : 1234]
+```
+---
+
+## ✅build 명령어
 
 1. 의존성 다운로드 및 빌드 및 JAR실행 파일 생성
 
@@ -158,6 +189,11 @@ saramin/          # 프로젝트 루트 디렉토리
 
 ---
 
+## 📖DataBase
+![image10](img/mysql_database.jpeg)
+
+---
+
 ## 🔗URL
 
 [http://113.198.66.75:10161/swagger-ui/index.html](http://113.198.66.75:10161/swagger-ui/index.html)
@@ -195,12 +231,34 @@ saramin/          # 프로젝트 루트 디렉토리
 
 ## 🔐Authorize
 
-### Authorize 전 이용 가능
+## Authorize 전 이용 가능
 
-- Authentication 사용자 및 인증 관련 API
-- Jobs 채용 공고 관련 API
+### Authentication 사용자 및 인증 관련 API
 
-### Authorize 후 이용 가능
+- /auth/profile
+- /auth/register
+- /auth/refresh
+- /auth/login
 
-- Bookmarks 북마크 관련 API
-- application-controller
+### Jobs 채용 공고 관련 API
+
+- /jobs
+- /jobs/{id}
+
+---
+
+## Authorize 후 이용 가능
+
+### Bookmarks 북마크 관련 API 
+
+- /bookmarks/{id}
+- /bookmarks/{currentPage}
+
+### application-controller
+
+- /application-controller/getApplications/{id}
+- /application-controller/applications/{id}
+- /application-controller/applications/{jobpostId}
+- 
+
+
