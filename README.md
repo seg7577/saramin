@@ -29,6 +29,12 @@ ssh -i ~/.ssh/MSEOK-saramin.pem ubuntu@113.198.66.75 -p 19161
 
 ### docker 컨테이너 생성
 
+- 컨테이너 실행 및 존재 여부 확인
+
+```cpp
+sudo docker ps -a
+```
+
 - 컨테이너 생성 및 실행
 
 ```cpp
@@ -60,7 +66,6 @@ java -jar build/libs/saramin-0.0.1-SNAPSHOT.jar
 OR
 
 ```cpp
-java -jar aramin-0.0.1-SNAPSHOT.jar
 nohup java -jar saramin-0.0.1-SNAPSHOT.jar //백그라운드 실행시 사용
 ```
 
@@ -69,10 +74,10 @@ nohup java -jar saramin-0.0.1-SNAPSHOT.jar //백그라운드 실행시 사용
 ## 📁프로젝트 구조
 
 ```cpp
-saramin/          # 프로젝트 루트 디렉토리
+saramin/          
 ├── src/
-│   ├── main/                    # 메인 소스 코드 디렉토리
-│   │   ├── java/                # Java 소스 코드
+│   ├── main/                   
+│   │   ├── java/                
 │   │   │   └── com/
 │   │   │       └── example/
 │   │   │           └── saramin/
